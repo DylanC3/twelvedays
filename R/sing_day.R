@@ -13,11 +13,15 @@
 #' @import purrr
 #'
 #' @export
+
 sing_day <- function(dataset, line, phrase_col){
+  num <- dataset$Day.in.Words[line == dataset$Day]
+  str_vec <- c("On the", num, "day of Christmas, my true love gave to me,", "\n")
+  paste(str_vec) %>% cat()
 
   phrases <- dataset %>% pull({{phrase_col}})
-
-  #????
-
+  ret_vec <- c()
+  ret_val <- map_chr(line:1, ~paste(ret_vec, phrases[.x], sep = ""))
+  cat(ret_val, sep = "\n")
 
 }

@@ -18,12 +18,10 @@
 
 
 
-make_phrase <- function(num, num_word, item, verb, adjective, location){
-
-  verb <- str_replace_na(verb, "")
-
-  #????
-
-
+make_phrase <- function(num, num_word = NA, item = NA, verb = NA, adjective = NA, location = NA){
+  sentence <- list(num_word, adjective, item, verb, location)
+  sentence <- sentence[!is.na(sentence)]
+  sentence <- paste(sentence, collapse = " ")
+  return(sentence)
 }
 

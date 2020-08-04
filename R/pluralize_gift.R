@@ -10,11 +10,17 @@
 #' @import purrr
 #'
 #' @export
-pluralize_gift <- function(gift){
-
-gift <- gift %>%
-  str_replace()
-
-return(gift)
-
+pluralize_gift <- function(gift, day){
+  orig <- gift
+  if(str_detect(gift, "y$") == TRUE) {
+    gift <- str_replace(gift, "y$", "ies")
+  } else if(gift == "goose"){
+    gift <- "geese"
+  } else {
+    gift <- paste(gift, "s", sep = "")
+  }
+  if(day == "first") {
+    gift <- orig
+  }
+  return(gift)
 }
